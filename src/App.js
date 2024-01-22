@@ -23,7 +23,6 @@ function App() {
          <Route path='/Addproduct' element={<Addproduct/>} />
        </Routes>
        
-          <Products/>
         </div>
       </div>
     </div>
