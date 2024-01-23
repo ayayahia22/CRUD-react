@@ -3,12 +3,23 @@ import { Link } from "react-router-dom";
 
 function Products() {
   const [products, setproducts] = useState([]);
+const getallproducts = ()=>{}
+   
   useEffect(() => {
     fetch("http://localhost:9000/products")
       .then((res) => res.json())
-      .then((data) => console.log(data));
-      setproducts(data)
+      .then((data) => {console.log(data)
+        setproducts(data)
+      }
+      
+      );
+     
   }, []);
+
+ function deletProduct(productId) {
+  fetch(`http://localhost:9000/products/${productId}`, { method: 'DELETE' })
+  .then((res) => res.json()) .then((data) => {console.log(data) });
+ }
   return (
     <>
       <>
@@ -29,12 +40,12 @@ function Products() {
                   <td>{product.title}</td>
                   <td>{product.price}$</td>
                   <td>
-                    <button type="button" class="btn btn-danger">
-                      Danger
+                    <button type="button" class="btn btn-danger "  onClick={()=>deletProduct(product.id)}>
+                      Delete
                     </button>
-                    <button type="button" class="btn btn-info btn-sm">
+                    < Link to={`/products/${product.id}`} type="button" class="btn btn-info btn-sm" >
                       View
-                    </button>
+                    </Link>
                     <button type="button" class="btn btn-primary btn-sm">
                       Edit
                     </button>
