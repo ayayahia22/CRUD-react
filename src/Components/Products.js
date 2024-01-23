@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import withReactContent from 'sweetalert2-react-content'
 
 
 function Product() {
@@ -18,11 +17,20 @@ function Product() {
      
   }, []);
 
- function deletProduct(productId) {
-  Swal.fire({title:`are you sure to delet?` })
-  fetch(`http://localhost:9000/products/${productId}`, { method: 'DELETE' })
-  .then((res) => res.json()) .then((data) => {console.log(data) });
- }
+ function deletProduct(productID) {
+  Swal.fire({
+    title: 'Do you want to save the changes?',
+    showCancelButton: true,
+  }).then((data) =>{
+    if(data.isconfermed){
+      fetch(`http://localhost:9000/products/${productID}`,
+       { method: 'DELETE' })
+      .then((res) => res.json()) 
+     .then(()=>{Product()})
+    } 
+    })
+  };
+  
   return (
     <>
       <>
