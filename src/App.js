@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Link to='products/add' type="button" class="btn btn-primary btn-sm mt-2">Add new product</Link>
+      <Link to='/Addproduct' type="button" class="btn btn-primary btn-sm mt-2">Add new product</Link>
 
       <div className="row">
         <div className="col-2  Sidebar">

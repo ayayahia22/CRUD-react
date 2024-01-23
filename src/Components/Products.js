@@ -17,13 +17,13 @@ function Product() {
      
   }, []);
 
- function deletProduct(productID) {
+ function deletProduct(product) {
   Swal.fire({
     title: 'Do you want to save the changes?',
     showCancelButton: true,
   }).then((data) =>{
-    if(data.isconfermed){
-      fetch(`http://localhost:9000/products/${productID}`,
+    if(data.isConfermed){
+      fetch(`http://localhost:9000/products/${product.id}`,
        { method: 'DELETE' })
       .then((res) => res.json()) 
      .then(()=>{Product()})
