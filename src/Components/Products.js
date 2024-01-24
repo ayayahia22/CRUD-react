@@ -22,7 +22,7 @@ function Product() {
     title: 'Do you want to save the changes?',
     showCancelButton: true,
   }).then((data) =>{
-    if(data.isConfermed){
+    if(data.isConfirmed){
       fetch(`http://localhost:9000/products/${product.id}`,
        { method: 'DELETE' })
       .then((res) => res.json()) 
@@ -34,8 +34,8 @@ function Product() {
   return (
     <>
       <>
-        <div class="table-responsive mt-5 ">
-          <table class="table">
+        <div className="table-responsive mt-5 ">
+          <table className="table">
             <tr>
               <th scope="row m-2"></th>
               <th>Id</th>
@@ -51,13 +51,13 @@ function Product() {
                   <td>{product.title}</td>
                   <td>{product.price}$</td>
                   <td>
-                    <button type="button" class="btn btn-danger "  onClick={()=>deletProduct(product)}>
+                    <button type="button" className="btn btn-danger "  onClick={()=>deletProduct(product)}>
                       Delete
                     </button>
-                    < Link to={`/products/${product.id}`} type="button" class="btn btn-info btn-sm" >
+                    < Link to={`/products/${product.id}`} type="button" className="btn btn-info btn-sm" >
                       View
                     </Link>
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button type="button" className="btn btn-primary btn-sm">
                       Edit
                     </button>
                   </td>
